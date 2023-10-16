@@ -7,13 +7,13 @@ The app uses [TMDB API](https://developer.themoviedb.org/reference/intro/getting
 
 The app should contain 2 screens:
 
-*1. Search screen*:
+**1. Search screen:**
 
    Contains a search field and a grid for search results, the grid column count should increase based on screen size.
    When clicking a movie from the grid, the app should navigate to the second screen.
 
    
-*2. Movie details*:
+**2. Movie details:**
 
    Shows the details of the selected movie, it should show the movie poster, movie title, overview and cast.
 
