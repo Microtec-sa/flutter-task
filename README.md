@@ -21,3 +21,4 @@ The submitted repo should contain a working app, don't include any build related
 The repo should have a detailed ReadMe showing how to build and run the app.
 The repo should contain your updated CV.
 
+To submit the task, just fork this repo, make your changes & create a pull request.
