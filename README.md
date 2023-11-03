@@ -1,24 +1,16 @@
-# Flutter development application
+# movies
 
-To apply to the job, please submit a repo that implements the below requirements:
+A new Flutter project.
 
-A cross platform responsive app, should run and render perfectly on Web, Windows, iOS, iPadOS and Android.
-The app uses [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started) to search movies.
+## Getting Started
 
-The app should contain 2 screens:
+This project is a starting point for a Flutter application.
 
-**1. Search screen:**
+A few resources to get you started if this is your first Flutter project:
 
-   Contains a search field and a grid for search results, the grid column count should increase based on screen size.
-   When clicking a movie from the grid, the app should navigate to the second screen.
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-   
-**2. Movie details:**
-
-   Shows the details of the selected movie, it should show the movie poster, movie title, overview and cast.
-
-The submitted repo should contain a working app, don't include any build related files or directories.
-The repo should have a detailed ReadMe showing how to build and run the app.
-The repo should contain your updated CV.
-
-To submit the task, just fork this repo, make your changes & create a pull request.
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
