@@ -41,7 +41,5 @@ class MovieService{
           throw Exception('Error: $e');
         }
       }
-
-
   }
 }
