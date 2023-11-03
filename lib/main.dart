@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/cubit/cast_cubit.dart';
 import 'package:movies/cubit/movie_cubit.dart';
-import 'package:movies/screens/search_screen.dart';
 import 'package:movies/screens/splash_screen.dart';
 import 'package:movies/services/cast_service.dart';
 import 'package:movies/services/movie_service.dart';
