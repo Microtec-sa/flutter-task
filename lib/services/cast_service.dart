@@ -24,6 +24,7 @@ class CastService{
         return casts;
       }
       return [];
+
     }catch(e){
       if(e is DioException){
         throw Exception('Internet Connection Failed');
