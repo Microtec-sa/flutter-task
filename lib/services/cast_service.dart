@@ -4,7 +4,6 @@ import 'package:movies/utils/constants.dart';
 
 class CastService{
 
-
   Future<List<CastModel?>?> getCast({required int movieId}) async{
     try{
       Uri url = Uri(
@@ -25,6 +24,7 @@ class CastService{
         return casts;
       }
       return [];
+
     }catch(e){
       if(e is DioException){
         throw Exception('Internet Connection Failed');
