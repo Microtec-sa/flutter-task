@@ -1,7 +1,3 @@
-# movies
-
-A new Flutter project.
-
 # Movies
 
 ## Movies app is flutter app that shows the movies using search title and show the details of the movie
@@ -30,16 +26,3 @@ Second screen is the details screen that shows the details of the movie.
 * Open movies folder in android studio or visual studio code.
 * Run `flutter pub get` to install the dependencies.
 * Run the app using `flutter run` command.
-
-
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
