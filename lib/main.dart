@@ -23,14 +23,46 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: AppColors.bgColor2,
+        scaffoldBackgroundColor: AppColors.darkerBgColor,
         appBarTheme: AppBarTheme(
-          backgroundColor: AppColors.bgColor2.withOpacity(0.5),
+          backgroundColor: AppColors.darkerBgColor.withOpacity(0.5),
         ),
         navigationBarTheme: NavigationBarThemeData(
-          backgroundColor: AppColors.bgColor2.withOpacity(0.5),
+          backgroundColor: AppColors.darkerBgColor.withOpacity(0.5),
           labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
           indicatorColor: AppColors.primaryColor,
+        ),
+        textSelectionTheme: TextSelectionThemeData(
+          cursorColor: AppColors.primaryColor,
+          selectionColor: AppColors.primaryColor.withOpacity(0.4),
+          selectionHandleColor: AppColors.primaryColor,
+        ),
+        inputDecorationTheme: const InputDecorationTheme(
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            borderSide: BorderSide(
+              color: AppColors.primaryColor,
+              width: 2,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            borderSide: BorderSide(
+              color: AppColors.darkerBgColor,
+              width: 2,
+            ),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            borderSide: BorderSide(
+              color: AppColors.darkerBgColor,
+              width: 2,
+            ),
+          ),
+          filled: true,
+          fillColor: AppColors.bgColor,
+          hintStyle: TextStyle(color: AppColors.secondaryTextColor),
+          prefixIconColor: AppColors.brighterBgColor,
         ),
         fontFamily: 'Orbitron',
         pageTransitionsTheme: const PageTransitionsTheme(

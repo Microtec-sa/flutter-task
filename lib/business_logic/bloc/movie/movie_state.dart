@@ -10,13 +10,18 @@ class MovieState with _$MovieState {
 
   /// Fetched state means the app finished fetching data from api
   const factory MovieState.movieFetched(
-    List<Movie> apiResponse,
-  ) = _Fetched;
+    List<Movie> movies,
+  ) = _MovieFetched;
+
+  /// Fetched state means the app finished fetching data from api
+  const factory MovieState.movieSearchFetched(
+    List<Movie> movies,
+  ) = _MovieSearchFetched;
 
   /// Faild state means the app faild fetching data from api
   const factory MovieState.movieFaild(String message) = _Faild;
 
   /// End Of List state means the we loaded all data from api
   /// and no more data to fetch
-  const factory MovieState.movieEndOfList() = _EndOfList;
+  const factory MovieState.movieEndOfList(List<Movie> movies) = _EndOfList;
 }

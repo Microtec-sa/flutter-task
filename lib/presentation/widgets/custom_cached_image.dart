@@ -35,6 +35,11 @@ class CustomCachedImage extends StatelessWidget {
         ),
       ),
       fit: BoxFit.cover,
+      errorWidget: (context, url, error) => const Icon(
+        Icons.error_rounded,
+        color: AppColors.primaryColor,
+        size: 35,
+      ),
     );
   }
 }

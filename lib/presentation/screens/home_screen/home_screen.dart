@@ -8,7 +8,7 @@ import '../../../constants/colors.dart';
 /// List of screens which the nav bar will be used to navigate between
 List<Widget> screens = [
   const MoviesScreen(),
-  Text("data"),
+  const Text("data"),
 ];
 
 /// Home screens include the bottom nav bar
@@ -21,16 +21,9 @@ class HomeScreen extends StatelessWidget {
     return BlocBuilder<HomeTabIndexCubit, HomeTabIndexState>(
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            title: const Text(
-              'Discover',
-            ),
-          ),
           body: screens[state.tabIndex],
           bottomNavigationBar: NavigationBar(
-            backgroundColor: AppColors.bgColor2.withOpacity(0.5),
+            backgroundColor: AppColors.darkerBgColor.withOpacity(0.5),
             selectedIndex: state.tabIndex,
             onDestinationSelected: (value) =>
                 context.read<HomeTabIndexCubit>().changeTab(value),

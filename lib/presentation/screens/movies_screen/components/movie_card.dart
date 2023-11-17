@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../constants/stings.dart';
 import '../../../../data/models/movie.dart';
@@ -17,8 +16,8 @@ class MovieCard extends StatelessWidget {
       ),
       child: CustomCachedImage(
         imageUrl: ConstantStrings.imageBaseUrl +
-            ConstantStrings.imageSizes[4] +
-            movie.posterPath,
+            ConstantStrings.imageSizes[0] +
+            (movie.posterPath),
         height: 15,
       ),
     );

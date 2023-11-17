@@ -3,8 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:movies_app/data/models/movie.dart';
 import 'package:movies_app/data/repository/movie_repository.dart';
 
-import '../../../constants/helper.dart';
-
 part 'movie_state.dart';
 part 'movie_event.dart';
 part 'movie_bloc.freezed.dart';
@@ -12,37 +10,102 @@ part 'movie_bloc.freezed.dart';
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
   MovieBloc() : super(const MovieState.movieInitial()) {
     on<Fetch>((event, emit) async => _fetch(emit));
-    //on<FetchMore>((event, emit) async => _fetchMore(emit));
+    on<FetchMore>((event, emit) async => _fetchMore(emit));
+    on<Refresh>((event, emit) async => _refresh(emit));
+    on<Search>((event, emit) async => _search(emit));
+    on<SearchMore>((event, emit) async => _searchMore(emit));
   }
 
   /// Currently selected Movie by user to display more details
   Movie? currentlySelectedMovie;
 
+  int _pageCount = 0;
+
+  /// Current title query
+  String query = '';
+
   Future<void> _fetch(Emitter<MovieState> emit) async {
     if (state is _EndOfList) {
       return;
     }
+    _pageCount = 1;
+    final moviesRepository = MoviesRepository();
     try {
       emit(const _LoadInProgress());
-      final moviesRepository = MoviesRepository();
-      final movies = await moviesRepository.getMovies();
-      Log.debug(movies);
-      emit(_Fetched(movies));
+      final response = await moviesRepository.getMovies(_pageCount);
+      emit(_MovieFetched(response.data));
     } catch (e) {
-      emit(_Faild(
-          '${e.toString()} Unable to load data \n Please check your network'));
+      emit(_Faild(e.toString()));
     }
   }
 
-  /*Future<void> _fetchMore(Emitter<MovieState> emit) async {
-    if (_Fetched) {
-      try {
-        final MoviesRepository = MoviesRepository();
-      } catch (e) {
-        emit(const _Faild('Unable to load data \n Please check your network'));
-      }
-    } else {
-      emit(const _EndOfList());
+  Future<void> _fetchMore(Emitter<MovieState> emit) async {
+    if (state is _EndOfList) {
+      return;
     }
-  }*/
+    _pageCount++;
+    final moviesRepository = MoviesRepository();
+    try {
+      final response = await moviesRepository.getMovies(_pageCount);
+      if (response.page <= response.totalPage) {
+        emit(
+          _MovieFetched(
+            List.of((state as _MovieFetched).movies)..addAll(response.data),
+          ),
+        );
+      } else {
+        emit(_EndOfList((state as _MovieSearchFetched).movies));
+      }
+    } catch (e) {
+      emit(_Faild(e.toString()));
+    }
+  }
+
+  Future<void> _refresh(Emitter<MovieState> emit) async {
+    _pageCount = 0;
+    await _fetch(emit);
+  }
+
+  Future<void> _search(Emitter<MovieState> emit) async {
+    _pageCount = 1;
+    final moviesRepository = MoviesRepository();
+    try {
+      emit(const _LoadInProgress());
+      final response =
+          await moviesRepository.seaechMoviesByQuary(_pageCount, query);
+      if (response.data.isNotEmpty) {
+        emit(_MovieSearchFetched(response.data));
+      } else {
+        emit(const _Faild('No Data found match this keyword'));
+      }
+    } catch (e) {
+      emit(_Faild(e.toString()));
+    }
+    return;
+  }
+
+  Future<void> _searchMore(Emitter<MovieState> emit) async {
+    if (state is _EndOfList) {
+      return;
+    }
+    _pageCount++;
+    final moviesRepository = MoviesRepository();
+    try {
+      final response =
+          await moviesRepository.seaechMoviesByQuary(_pageCount, query);
+      if (response.page <= response.totalPage) {
+        emit(
+          _MovieSearchFetched(
+            List.of((state as _MovieSearchFetched).movies)
+              ..addAll(response.data),
+          ),
+        );
+      } else {
+        emit(_EndOfList((state as _MovieSearchFetched).movies));
+      }
+    } catch (e) {
+      emit(_Faild(e.toString()));
+    }
+    return;
+  }
 }
