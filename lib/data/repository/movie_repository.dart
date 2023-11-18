@@ -2,11 +2,14 @@ import 'package:movies_app/data/models/api_response.dart';
 import 'package:movies_app/data/models/movie.dart';
 import 'package:movies_app/data/web_services/web_serviece.dart';
 
-import '../../constants/helper.dart';
-
 ///Responsible for getting Movies from json responce
 class MoviesRepository {
-  ///Web service responsible for caling api
+  static final MoviesRepository _moviesRepository = MoviesRepository.internal();
+
+  factory MoviesRepository() => _moviesRepository;
+
+  MoviesRepository.internal() : allMovies = [];
+  List<Movie> allMovies;
 
   /// Returns all Movies data decoded from Responce
   Future<ApiResponse<List<Movie>>> getMovies(int pageCount) async {
@@ -18,10 +21,11 @@ class MoviesRepository {
     });
 
     final movies = (response.data['results'] as List);
-    final moviesList = movies.map((m) => Movie.fromJson(m)).toList();
+    if (pageCount == 1) allMovies.clear();
+    allMovies.addAll(movies.map((m) => Movie.fromJson(m)).toList());
 
     return ApiResponse(
-      data: moviesList,
+      data: List.of(allMovies),
       page: response.data['page'],
       totalPage: response.data['total_pages'],
     );
@@ -37,11 +41,11 @@ class MoviesRepository {
       'page': pageCount,
       'query': query,
     });
-    Log.debug(response);
     final movies = (response.data['results'] as List);
-    final moviesList = movies.map((m) => Movie.fromJson(m)).toList();
+    if (pageCount == 1) allMovies.clear();
+    allMovies.addAll(movies.map((m) => Movie.fromJson(m)).toList());
     return ApiResponse(
-      data: moviesList,
+      data: List.of(allMovies),
       page: response.data['page'],
       totalPage: response.data['total_pages'],
     );

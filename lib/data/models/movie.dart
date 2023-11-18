@@ -10,13 +10,13 @@ class Movie with _$Movie {
   const factory Movie({
     @JsonKey(name: 'id') required int id,
     @JsonKey(name: 'title') required String title,
-    @JsonKey(name: 'backdrop_path', defaultValue: '')
+    @JsonKey(name: 'backdrop_path', defaultValue: '/')
     required String backdropPath,
     @JsonKey(name: 'original_language') required String originalLanguage,
     @JsonKey(name: 'original_title') required String originalTitle,
     @JsonKey(name: 'overview') required String overview,
     @JsonKey(name: 'popularity') required double popularity,
-    @JsonKey(name: 'poster_path', defaultValue: '') required String posterPath,
+    @JsonKey(name: 'poster_path', defaultValue: '/') required String posterPath,
     @JsonKey(name: 'release_date') required String releaseDate,
     @JsonKey(name: 'video') required bool video,
     @JsonKey(name: 'vote_count') required int voteCount,

@@ -9,6 +9,7 @@ class CustomCachedImage extends StatelessWidget {
     required this.imageUrl,
     required this.height,
     super.key,
+    this.circlar = false,
   });
 
   /// Image Url
@@ -16,6 +17,8 @@ class CustomCachedImage extends StatelessWidget {
 
   /// Desired height of the image
   final double height;
+
+  final bool circlar;
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +30,18 @@ class CustomCachedImage extends StatelessWidget {
       fadeInDuration: const Duration(milliseconds: 700),
       fadeOutDuration: const Duration(milliseconds: 500),
       placeholder: (context, url) => Align(
-        alignment: Alignment.topCenter,
-        child: LinearProgressIndicator(
-          minHeight: 10,
-          color: AppColors.bgColor,
-          backgroundColor: AppColors.bgColor.withOpacity(0.3),
-        ),
+        alignment: circlar ? Alignment.center : Alignment.topCenter,
+        child: circlar
+            ? const CircularProgressIndicator.adaptive(
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  AppColors.secondaryColor,
+                ),
+              )
+            : LinearProgressIndicator(
+                minHeight: 10,
+                color: AppColors.secondaryColor,
+                backgroundColor: AppColors.bgColor.withOpacity(0.3),
+              ),
       ),
       fit: BoxFit.cover,
       errorWidget: (context, url, error) => const Icon(

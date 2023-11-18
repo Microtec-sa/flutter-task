@@ -2,7 +2,7 @@ part of 'movie_bloc.dart';
 
 @freezed
 class MovieState with _$MovieState {
-  /// Initial state means the app just opend`
+  /// Initial state means the app just opend
   const factory MovieState.movieInitial() = _Initial;
 
   /// LoadInProgress state means the app loading data from api

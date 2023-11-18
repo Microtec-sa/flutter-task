@@ -16,7 +16,7 @@ class MovieCard extends StatelessWidget {
       ),
       child: CustomCachedImage(
         imageUrl: ConstantStrings.imageBaseUrl +
-            ConstantStrings.imageSizes[0] +
+            ConstantStrings.posetrSizes[1] +
             (movie.posterPath),
         height: 15,
       ),

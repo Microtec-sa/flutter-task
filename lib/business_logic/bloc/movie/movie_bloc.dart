@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:movies_app/constants/helper.dart';
 import 'package:movies_app/data/models/movie.dart';
 import 'package:movies_app/data/repository/movie_repository.dart';
 
@@ -11,7 +12,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
   MovieBloc() : super(const MovieState.movieInitial()) {
     on<Fetch>((event, emit) async => _fetch(emit));
     on<FetchMore>((event, emit) async => _fetchMore(emit));
-    on<Refresh>((event, emit) async => _refresh(emit));
+    //on<Refresh>((event, emit) async => _refresh(emit));
     on<Search>((event, emit) async => _search(emit));
     on<SearchMore>((event, emit) async => _searchMore(emit));
   }
@@ -25,9 +26,6 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
   String query = '';
 
   Future<void> _fetch(Emitter<MovieState> emit) async {
-    if (state is _EndOfList) {
-      return;
-    }
     _pageCount = 1;
     final moviesRepository = MoviesRepository();
     try {
@@ -40,31 +38,24 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
   }
 
   Future<void> _fetchMore(Emitter<MovieState> emit) async {
-    if (state is _EndOfList) {
-      return;
-    }
     _pageCount++;
     final moviesRepository = MoviesRepository();
     try {
       final response = await moviesRepository.getMovies(_pageCount);
       if (response.page <= response.totalPage) {
-        emit(
-          _MovieFetched(
-            List.of((state as _MovieFetched).movies)..addAll(response.data),
-          ),
-        );
+        emit(_MovieFetched(response.data));
       } else {
-        emit(_EndOfList((state as _MovieSearchFetched).movies));
+        emit(_EndOfList(response.data));
       }
     } catch (e) {
       emit(_Faild(e.toString()));
     }
   }
 
-  Future<void> _refresh(Emitter<MovieState> emit) async {
+  /*Future<void> _refresh(Emitter<MovieState> emit) async {
     _pageCount = 0;
     await _fetch(emit);
-  }
+  }*/
 
   Future<void> _search(Emitter<MovieState> emit) async {
     _pageCount = 1;
@@ -85,23 +76,15 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
   }
 
   Future<void> _searchMore(Emitter<MovieState> emit) async {
-    if (state is _EndOfList) {
-      return;
-    }
     _pageCount++;
     final moviesRepository = MoviesRepository();
     try {
       final response =
           await moviesRepository.seaechMoviesByQuary(_pageCount, query);
       if (response.page <= response.totalPage) {
-        emit(
-          _MovieSearchFetched(
-            List.of((state as _MovieSearchFetched).movies)
-              ..addAll(response.data),
-          ),
-        );
+        emit(_MovieSearchFetched(response.data));
       } else {
-        emit(_EndOfList((state as _MovieSearchFetched).movies));
+        emit(_EndOfList(response.data));
       }
     } catch (e) {
       emit(_Faild(e.toString()));

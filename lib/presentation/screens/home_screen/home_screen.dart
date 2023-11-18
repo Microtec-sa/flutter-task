@@ -11,6 +11,12 @@ List<Widget> screens = [
   const Text("data"),
 ];
 
+/// List of screens which the nav bar will be used to navigate between
+List<String> appBarTitle = [
+  'Discover',
+  'Search',
+];
+
 /// Home screens include the bottom nav bar
 class HomeScreen extends StatelessWidget {
   /// Home screen
@@ -21,9 +27,18 @@ class HomeScreen extends StatelessWidget {
     return BlocBuilder<HomeTabIndexCubit, HomeTabIndexState>(
       builder: (context, state) {
         return Scaffold(
+          extendBody: true,
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            backgroundColor: AppColors.darkerBgColor.withOpacity(0.7),
+            elevation: 0,
+            title: Text(
+              appBarTitle[state.tabIndex],
+            ),
+          ),
           body: screens[state.tabIndex],
           bottomNavigationBar: NavigationBar(
-            backgroundColor: AppColors.darkerBgColor.withOpacity(0.5),
+            backgroundColor: AppColors.darkerBgColor.withOpacity(0.7),
             selectedIndex: state.tabIndex,
             onDestinationSelected: (value) =>
                 context.read<HomeTabIndexCubit>().changeTab(value),

@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/presentation/screens/movie_details_screen/movie_details_screen.dart';
 
 import '../../../../business_logic/bloc/movie/movie_bloc.dart';
 import '../../../../data/models/movie.dart';
@@ -27,7 +28,7 @@ class ContainerWrapper extends StatelessWidget {
       openBuilder: (context2, closedContainer) {
         return BlocProvider.value(
           value: BlocProvider.of<MovieBloc>(context),
-          child: const Scaffold(),
+          child: const MovieDetailsScreen(),
         );
       },
       closedShape: RoundedRectangleBorder(

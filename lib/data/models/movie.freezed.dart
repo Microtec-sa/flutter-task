@@ -24,7 +24,7 @@ mixin _$Movie {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
-  @JsonKey(name: 'backdrop_path', defaultValue: '')
+  @JsonKey(name: 'backdrop_path', defaultValue: '/')
   String get backdropPath => throw _privateConstructorUsedError;
   @JsonKey(name: 'original_language')
   String get originalLanguage => throw _privateConstructorUsedError;
@@ -34,7 +34,7 @@ mixin _$Movie {
   String get overview => throw _privateConstructorUsedError;
   @JsonKey(name: 'popularity')
   double get popularity => throw _privateConstructorUsedError;
-  @JsonKey(name: 'poster_path', defaultValue: '')
+  @JsonKey(name: 'poster_path', defaultValue: '/')
   String get posterPath => throw _privateConstructorUsedError;
   @JsonKey(name: 'release_date')
   String get releaseDate => throw _privateConstructorUsedError;
@@ -58,12 +58,12 @@ abstract class $MovieCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'title') String title,
-      @JsonKey(name: 'backdrop_path', defaultValue: '') String backdropPath,
+      @JsonKey(name: 'backdrop_path', defaultValue: '/') String backdropPath,
       @JsonKey(name: 'original_language') String originalLanguage,
       @JsonKey(name: 'original_title') String originalTitle,
       @JsonKey(name: 'overview') String overview,
       @JsonKey(name: 'popularity') double popularity,
-      @JsonKey(name: 'poster_path', defaultValue: '') String posterPath,
+      @JsonKey(name: 'poster_path', defaultValue: '/') String posterPath,
       @JsonKey(name: 'release_date') String releaseDate,
       @JsonKey(name: 'video') bool video,
       @JsonKey(name: 'vote_count') int voteCount,
@@ -159,12 +159,12 @@ abstract class _$$MovieImplCopyWith<$Res> implements $MovieCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'title') String title,
-      @JsonKey(name: 'backdrop_path', defaultValue: '') String backdropPath,
+      @JsonKey(name: 'backdrop_path', defaultValue: '/') String backdropPath,
       @JsonKey(name: 'original_language') String originalLanguage,
       @JsonKey(name: 'original_title') String originalTitle,
       @JsonKey(name: 'overview') String overview,
       @JsonKey(name: 'popularity') double popularity,
-      @JsonKey(name: 'poster_path', defaultValue: '') String posterPath,
+      @JsonKey(name: 'poster_path', defaultValue: '/') String posterPath,
       @JsonKey(name: 'release_date') String releaseDate,
       @JsonKey(name: 'video') bool video,
       @JsonKey(name: 'vote_count') int voteCount,
@@ -254,13 +254,13 @@ class _$MovieImpl with DiagnosticableTreeMixin implements _Movie {
   const _$MovieImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'title') required this.title,
-      @JsonKey(name: 'backdrop_path', defaultValue: '')
+      @JsonKey(name: 'backdrop_path', defaultValue: '/')
       required this.backdropPath,
       @JsonKey(name: 'original_language') required this.originalLanguage,
       @JsonKey(name: 'original_title') required this.originalTitle,
       @JsonKey(name: 'overview') required this.overview,
       @JsonKey(name: 'popularity') required this.popularity,
-      @JsonKey(name: 'poster_path', defaultValue: '') required this.posterPath,
+      @JsonKey(name: 'poster_path', defaultValue: '/') required this.posterPath,
       @JsonKey(name: 'release_date') required this.releaseDate,
       @JsonKey(name: 'video') required this.video,
       @JsonKey(name: 'vote_count') required this.voteCount,
@@ -276,7 +276,7 @@ class _$MovieImpl with DiagnosticableTreeMixin implements _Movie {
   @JsonKey(name: 'title')
   final String title;
   @override
-  @JsonKey(name: 'backdrop_path', defaultValue: '')
+  @JsonKey(name: 'backdrop_path', defaultValue: '/')
   final String backdropPath;
   @override
   @JsonKey(name: 'original_language')
@@ -291,7 +291,7 @@ class _$MovieImpl with DiagnosticableTreeMixin implements _Movie {
   @JsonKey(name: 'popularity')
   final double popularity;
   @override
-  @JsonKey(name: 'poster_path', defaultValue: '')
+  @JsonKey(name: 'poster_path', defaultValue: '/')
   final String posterPath;
   @override
   @JsonKey(name: 'release_date')
@@ -393,14 +393,14 @@ abstract class _Movie implements Movie {
   const factory _Movie(
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'title') required final String title,
-          @JsonKey(name: 'backdrop_path', defaultValue: '')
+          @JsonKey(name: 'backdrop_path', defaultValue: '/')
           required final String backdropPath,
           @JsonKey(name: 'original_language')
           required final String originalLanguage,
           @JsonKey(name: 'original_title') required final String originalTitle,
           @JsonKey(name: 'overview') required final String overview,
           @JsonKey(name: 'popularity') required final double popularity,
-          @JsonKey(name: 'poster_path', defaultValue: '')
+          @JsonKey(name: 'poster_path', defaultValue: '/')
           required final String posterPath,
           @JsonKey(name: 'release_date') required final String releaseDate,
           @JsonKey(name: 'video') required final bool video,
@@ -417,7 +417,7 @@ abstract class _Movie implements Movie {
   @JsonKey(name: 'title')
   String get title;
   @override
-  @JsonKey(name: 'backdrop_path', defaultValue: '')
+  @JsonKey(name: 'backdrop_path', defaultValue: '/')
   String get backdropPath;
   @override
   @JsonKey(name: 'original_language')
@@ -432,7 +432,7 @@ abstract class _Movie implements Movie {
   @JsonKey(name: 'popularity')
   double get popularity;
   @override
-  @JsonKey(name: 'poster_path', defaultValue: '')
+  @JsonKey(name: 'poster_path', defaultValue: '/')
   String get posterPath;
   @override
   @JsonKey(name: 'release_date')

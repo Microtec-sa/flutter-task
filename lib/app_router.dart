@@ -34,11 +34,7 @@ class AppRouter {
             child: const HomeScreen(),
           ),
         );
-      /*case ConstantStrings.MovDetailsScreen:
-        return PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) =>
-              const CharacterDetailscreen(),
-        );*/
+
       default:
         return MaterialPageRoute(builder: (_) => const MoviesScreen());
     }
