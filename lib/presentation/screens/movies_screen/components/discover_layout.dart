@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/constants/colors.dart';
 import 'package:movies_app/presentation/screens/movies_screen/components/movie_card.dart';
@@ -24,25 +25,43 @@ class DiscoverLayout extends StatefulWidget {
 
 class _DiscoverLayoutState extends State<DiscoverLayout> {
   late ScrollController scrollController;
+  final GlobalKey scrollViewKey = GlobalKey();
 
   @override
   void initState() {
     super.initState();
     scrollController = ScrollController();
-    scrollController.addListener(() {
-      if (scrollController.position.maxScrollExtent - scrollController.offset ==
-          0) {
-        context.read<MovieBloc>().state.mapOrNull(
-              movieFetched: (movies) => context.read<MovieBloc>().add(
-                    const FetchMore(),
-                  ),
-              movieSearchFetched: (movies) => context.read<MovieBloc>().add(
-                    const SearchMore(),
-                  ),
-              movieEndOfList: (value) => {},
-            );
-      }
-    });
+
+    /// This process prevents the stuck state
+    /// when the gridview is not scrollable
+    SchedulerBinding.instance.addPostFrameCallback(
+      (_) {
+        if (scrollController.position.maxScrollExtent == 0.0) {
+          fetchDataByStateType();
+        }
+      },
+    );
+    scrollController.addListener(
+      () {
+        if (scrollController.position.maxScrollExtent -
+                scrollController.offset ==
+            0) {
+          fetchDataByStateType();
+        }
+      },
+    );
+  }
+
+  void fetchDataByStateType() {
+    context.read<MovieBloc>().state.mapOrNull(
+          movieFetched: (movies) => context.read<MovieBloc>().add(
+                const FetchMore(),
+              ),
+          movieSearchFetched: (movies) => context.read<MovieBloc>().add(
+                const SearchMore(),
+              ),
+          movieEndOfList: (value) => {},
+        );
   }
 
   @override
@@ -62,6 +81,7 @@ class _DiscoverLayoutState extends State<DiscoverLayout> {
       axisDirection: AxisDirection.down,
       color: AppColors.primaryColor,
       child: GridView.builder(
+        key: scrollViewKey,
         controller: scrollController,
         padding:
             EdgeInsets.only(top: topPadding + 55 + 5, bottom: bottomPadding),

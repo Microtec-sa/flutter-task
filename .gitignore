@@ -44,5 +44,4 @@ app.*.map.json
 /android/app/release
 
 # Developer defined  
-*.env
 lib/env/env.g.dart
