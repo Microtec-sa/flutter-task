@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,12 +29,14 @@ class MoviesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final topPadding = MediaQuery.of(context).padding.top;
     final size = MediaQuery.of(context).size;
+    final currentHorizontalPadding = size.width * 0.05;
+    const minHorizontalPadding = 20.0;
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: Padding(
-        padding: const EdgeInsets.symmetric(
+        padding: EdgeInsets.symmetric(
           vertical: 5,
-          horizontal: 20,
+          horizontal: max(minHorizontalPadding, currentHorizontalPadding),
         ),
         child: Stack(
           alignment: Alignment.center,
@@ -56,6 +60,9 @@ class MoviesScreen extends StatelessWidget {
                   movieEndOfList: (movies) => DiscoverLayout(
                     movies: movies,
                     endOfList: true,
+                  ),
+                  movieFetchMoreInProgress: (movies) => DiscoverLayout(
+                    movies: movies,
                   ),
                   movieFaild: (message) => Center(
                     child: Column(
@@ -84,7 +91,8 @@ class MoviesScreen extends StatelessWidget {
             Positioned(
               top: topPadding,
               height: 50,
-              width: size.width * 0.85,
+              left: 20,
+              right: 20,
               child: TextField(
                 decoration: const InputDecoration(
                   prefixIcon: Icon(

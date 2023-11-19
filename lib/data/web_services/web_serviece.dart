@@ -21,7 +21,6 @@ class WebService {
         },*/
         connectTimeout: const Duration(seconds: 30),
         receiveTimeout: const Duration(seconds: 30),
-        sendTimeout: const Duration(seconds: 20),
       ),
     );
     _dio.interceptors.add(ErrorInterceptor(_dio));

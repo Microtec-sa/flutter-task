@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,6 +16,8 @@ class FlexibleAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final currentPosterWidth = size.width * 0.1;
+    const minPosterWidth = 150.0;
     final movie = context.read<MovieBloc>().currentlySelectedMovie;
     return FlexibleSpaceBar(
       centerTitle: true,
@@ -47,8 +51,8 @@ class FlexibleAppBar extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                width: size.width * 0.4,
-                height: size.height * 0.25,
+                width: max(minPosterWidth, currentPosterWidth),
+                height: size.height * 0.26,
                 clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(

@@ -5,8 +5,13 @@ class MovieState with _$MovieState {
   /// Initial state means the app just opend
   const factory MovieState.movieInitial() = _Initial;
 
-  /// LoadInProgress state means the app loading data from api
+  /// LoadInProgress state means the app do the initial loading data from api
   const factory MovieState.movieLoadInProgress() = _LoadInProgress;
+
+  /// LoadInProgress state means the app loading more data from api
+  const factory MovieState.movieFetchMoreInProgress(
+    List<Movie> movies,
+  ) = _FetchMoreInProgress;
 
   /// Fetched state means the app finished fetching data from api
   const factory MovieState.movieFetched(

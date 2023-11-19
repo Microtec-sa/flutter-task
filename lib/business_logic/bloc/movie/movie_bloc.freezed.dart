@@ -20,6 +20,7 @@ mixin _$MovieState {
   TResult when<TResult extends Object?>({
     required TResult Function() movieInitial,
     required TResult Function() movieLoadInProgress,
+    required TResult Function(List<Movie> movies) movieFetchMoreInProgress,
     required TResult Function(List<Movie> movies) movieFetched,
     required TResult Function(List<Movie> movies) movieSearchFetched,
     required TResult Function(String message) movieFaild,
@@ -30,6 +31,7 @@ mixin _$MovieState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? movieInitial,
     TResult? Function()? movieLoadInProgress,
+    TResult? Function(List<Movie> movies)? movieFetchMoreInProgress,
     TResult? Function(List<Movie> movies)? movieFetched,
     TResult? Function(List<Movie> movies)? movieSearchFetched,
     TResult? Function(String message)? movieFaild,
@@ -40,6 +42,7 @@ mixin _$MovieState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? movieInitial,
     TResult Function()? movieLoadInProgress,
+    TResult Function(List<Movie> movies)? movieFetchMoreInProgress,
     TResult Function(List<Movie> movies)? movieFetched,
     TResult Function(List<Movie> movies)? movieSearchFetched,
     TResult Function(String message)? movieFaild,
@@ -51,6 +54,8 @@ mixin _$MovieState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) movieInitial,
     required TResult Function(_LoadInProgress value) movieLoadInProgress,
+    required TResult Function(_FetchMoreInProgress value)
+        movieFetchMoreInProgress,
     required TResult Function(_MovieFetched value) movieFetched,
     required TResult Function(_MovieSearchFetched value) movieSearchFetched,
     required TResult Function(_Faild value) movieFaild,
@@ -61,6 +66,7 @@ mixin _$MovieState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? movieInitial,
     TResult? Function(_LoadInProgress value)? movieLoadInProgress,
+    TResult? Function(_FetchMoreInProgress value)? movieFetchMoreInProgress,
     TResult? Function(_MovieFetched value)? movieFetched,
     TResult? Function(_MovieSearchFetched value)? movieSearchFetched,
     TResult? Function(_Faild value)? movieFaild,
@@ -71,6 +77,7 @@ mixin _$MovieState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? movieInitial,
     TResult Function(_LoadInProgress value)? movieLoadInProgress,
+    TResult Function(_FetchMoreInProgress value)? movieFetchMoreInProgress,
     TResult Function(_MovieFetched value)? movieFetched,
     TResult Function(_MovieSearchFetched value)? movieSearchFetched,
     TResult Function(_Faild value)? movieFaild,
@@ -138,6 +145,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() movieInitial,
     required TResult Function() movieLoadInProgress,
+    required TResult Function(List<Movie> movies) movieFetchMoreInProgress,
     required TResult Function(List<Movie> movies) movieFetched,
     required TResult Function(List<Movie> movies) movieSearchFetched,
     required TResult Function(String message) movieFaild,
@@ -151,6 +159,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? movieInitial,
     TResult? Function()? movieLoadInProgress,
+    TResult? Function(List<Movie> movies)? movieFetchMoreInProgress,
     TResult? Function(List<Movie> movies)? movieFetched,
     TResult? Function(List<Movie> movies)? movieSearchFetched,
     TResult? Function(String message)? movieFaild,
@@ -164,6 +173,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? movieInitial,
     TResult Function()? movieLoadInProgress,
+    TResult Function(List<Movie> movies)? movieFetchMoreInProgress,
     TResult Function(List<Movie> movies)? movieFetched,
     TResult Function(List<Movie> movies)? movieSearchFetched,
     TResult Function(String message)? movieFaild,
@@ -181,6 +191,8 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) movieInitial,
     required TResult Function(_LoadInProgress value) movieLoadInProgress,
+    required TResult Function(_FetchMoreInProgress value)
+        movieFetchMoreInProgress,
     required TResult Function(_MovieFetched value) movieFetched,
     required TResult Function(_MovieSearchFetched value) movieSearchFetched,
     required TResult Function(_Faild value) movieFaild,
@@ -194,6 +206,7 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? movieInitial,
     TResult? Function(_LoadInProgress value)? movieLoadInProgress,
+    TResult? Function(_FetchMoreInProgress value)? movieFetchMoreInProgress,
     TResult? Function(_MovieFetched value)? movieFetched,
     TResult? Function(_MovieSearchFetched value)? movieSearchFetched,
     TResult? Function(_Faild value)? movieFaild,
@@ -207,6 +220,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? movieInitial,
     TResult Function(_LoadInProgress value)? movieLoadInProgress,
+    TResult Function(_FetchMoreInProgress value)? movieFetchMoreInProgress,
     TResult Function(_MovieFetched value)? movieFetched,
     TResult Function(_MovieSearchFetched value)? movieSearchFetched,
     TResult Function(_Faild value)? movieFaild,
@@ -264,6 +278,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   TResult when<TResult extends Object?>({
     required TResult Function() movieInitial,
     required TResult Function() movieLoadInProgress,
+    required TResult Function(List<Movie> movies) movieFetchMoreInProgress,
     required TResult Function(List<Movie> movies) movieFetched,
     required TResult Function(List<Movie> movies) movieSearchFetched,
     required TResult Function(String message) movieFaild,
@@ -277,6 +292,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? movieInitial,
     TResult? Function()? movieLoadInProgress,
+    TResult? Function(List<Movie> movies)? movieFetchMoreInProgress,
     TResult? Function(List<Movie> movies)? movieFetched,
     TResult? Function(List<Movie> movies)? movieSearchFetched,
     TResult? Function(String message)? movieFaild,
@@ -290,6 +306,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? movieInitial,
     TResult Function()? movieLoadInProgress,
+    TResult Function(List<Movie> movies)? movieFetchMoreInProgress,
     TResult Function(List<Movie> movies)? movieFetched,
     TResult Function(List<Movie> movies)? movieSearchFetched,
     TResult Function(String message)? movieFaild,
@@ -307,6 +324,8 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) movieInitial,
     required TResult Function(_LoadInProgress value) movieLoadInProgress,
+    required TResult Function(_FetchMoreInProgress value)
+        movieFetchMoreInProgress,
     required TResult Function(_MovieFetched value) movieFetched,
     required TResult Function(_MovieSearchFetched value) movieSearchFetched,
     required TResult Function(_Faild value) movieFaild,
@@ -320,6 +339,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? movieInitial,
     TResult? Function(_LoadInProgress value)? movieLoadInProgress,
+    TResult? Function(_FetchMoreInProgress value)? movieFetchMoreInProgress,
     TResult? Function(_MovieFetched value)? movieFetched,
     TResult? Function(_MovieSearchFetched value)? movieSearchFetched,
     TResult? Function(_Faild value)? movieFaild,
@@ -333,6 +353,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? movieInitial,
     TResult Function(_LoadInProgress value)? movieLoadInProgress,
+    TResult Function(_FetchMoreInProgress value)? movieFetchMoreInProgress,
     TResult Function(_MovieFetched value)? movieFetched,
     TResult Function(_MovieSearchFetched value)? movieSearchFetched,
     TResult Function(_Faild value)? movieFaild,
@@ -348,6 +369,178 @@ class _$LoadInProgressImpl implements _LoadInProgress {
 
 abstract class _LoadInProgress implements MovieState {
   const factory _LoadInProgress() = _$LoadInProgressImpl;
+}
+
+/// @nodoc
+abstract class _$$FetchMoreInProgressImplCopyWith<$Res> {
+  factory _$$FetchMoreInProgressImplCopyWith(_$FetchMoreInProgressImpl value,
+          $Res Function(_$FetchMoreInProgressImpl) then) =
+      __$$FetchMoreInProgressImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Movie> movies});
+}
+
+/// @nodoc
+class __$$FetchMoreInProgressImplCopyWithImpl<$Res>
+    extends _$MovieStateCopyWithImpl<$Res, _$FetchMoreInProgressImpl>
+    implements _$$FetchMoreInProgressImplCopyWith<$Res> {
+  __$$FetchMoreInProgressImplCopyWithImpl(_$FetchMoreInProgressImpl _value,
+      $Res Function(_$FetchMoreInProgressImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? movies = null,
+  }) {
+    return _then(_$FetchMoreInProgressImpl(
+      null == movies
+          ? _value._movies
+          : movies // ignore: cast_nullable_to_non_nullable
+              as List<Movie>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchMoreInProgressImpl implements _FetchMoreInProgress {
+  const _$FetchMoreInProgressImpl(final List<Movie> movies) : _movies = movies;
+
+  final List<Movie> _movies;
+  @override
+  List<Movie> get movies {
+    if (_movies is EqualUnmodifiableListView) return _movies;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_movies);
+  }
+
+  @override
+  String toString() {
+    return 'MovieState.movieFetchMoreInProgress(movies: $movies)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchMoreInProgressImpl &&
+            const DeepCollectionEquality().equals(other._movies, _movies));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_movies));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchMoreInProgressImplCopyWith<_$FetchMoreInProgressImpl> get copyWith =>
+      __$$FetchMoreInProgressImplCopyWithImpl<_$FetchMoreInProgressImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() movieInitial,
+    required TResult Function() movieLoadInProgress,
+    required TResult Function(List<Movie> movies) movieFetchMoreInProgress,
+    required TResult Function(List<Movie> movies) movieFetched,
+    required TResult Function(List<Movie> movies) movieSearchFetched,
+    required TResult Function(String message) movieFaild,
+    required TResult Function(List<Movie> movies) movieEndOfList,
+  }) {
+    return movieFetchMoreInProgress(movies);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? movieInitial,
+    TResult? Function()? movieLoadInProgress,
+    TResult? Function(List<Movie> movies)? movieFetchMoreInProgress,
+    TResult? Function(List<Movie> movies)? movieFetched,
+    TResult? Function(List<Movie> movies)? movieSearchFetched,
+    TResult? Function(String message)? movieFaild,
+    TResult? Function(List<Movie> movies)? movieEndOfList,
+  }) {
+    return movieFetchMoreInProgress?.call(movies);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? movieInitial,
+    TResult Function()? movieLoadInProgress,
+    TResult Function(List<Movie> movies)? movieFetchMoreInProgress,
+    TResult Function(List<Movie> movies)? movieFetched,
+    TResult Function(List<Movie> movies)? movieSearchFetched,
+    TResult Function(String message)? movieFaild,
+    TResult Function(List<Movie> movies)? movieEndOfList,
+    required TResult orElse(),
+  }) {
+    if (movieFetchMoreInProgress != null) {
+      return movieFetchMoreInProgress(movies);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) movieInitial,
+    required TResult Function(_LoadInProgress value) movieLoadInProgress,
+    required TResult Function(_FetchMoreInProgress value)
+        movieFetchMoreInProgress,
+    required TResult Function(_MovieFetched value) movieFetched,
+    required TResult Function(_MovieSearchFetched value) movieSearchFetched,
+    required TResult Function(_Faild value) movieFaild,
+    required TResult Function(_EndOfList value) movieEndOfList,
+  }) {
+    return movieFetchMoreInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? movieInitial,
+    TResult? Function(_LoadInProgress value)? movieLoadInProgress,
+    TResult? Function(_FetchMoreInProgress value)? movieFetchMoreInProgress,
+    TResult? Function(_MovieFetched value)? movieFetched,
+    TResult? Function(_MovieSearchFetched value)? movieSearchFetched,
+    TResult? Function(_Faild value)? movieFaild,
+    TResult? Function(_EndOfList value)? movieEndOfList,
+  }) {
+    return movieFetchMoreInProgress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? movieInitial,
+    TResult Function(_LoadInProgress value)? movieLoadInProgress,
+    TResult Function(_FetchMoreInProgress value)? movieFetchMoreInProgress,
+    TResult Function(_MovieFetched value)? movieFetched,
+    TResult Function(_MovieSearchFetched value)? movieSearchFetched,
+    TResult Function(_Faild value)? movieFaild,
+    TResult Function(_EndOfList value)? movieEndOfList,
+    required TResult orElse(),
+  }) {
+    if (movieFetchMoreInProgress != null) {
+      return movieFetchMoreInProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchMoreInProgress implements MovieState {
+  const factory _FetchMoreInProgress(final List<Movie> movies) =
+      _$FetchMoreInProgressImpl;
+
+  List<Movie> get movies;
+  @JsonKey(ignore: true)
+  _$$FetchMoreInProgressImplCopyWith<_$FetchMoreInProgressImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -422,6 +615,7 @@ class _$MovieFetchedImpl implements _MovieFetched {
   TResult when<TResult extends Object?>({
     required TResult Function() movieInitial,
     required TResult Function() movieLoadInProgress,
+    required TResult Function(List<Movie> movies) movieFetchMoreInProgress,
     required TResult Function(List<Movie> movies) movieFetched,
     required TResult Function(List<Movie> movies) movieSearchFetched,
     required TResult Function(String message) movieFaild,
@@ -435,6 +629,7 @@ class _$MovieFetchedImpl implements _MovieFetched {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? movieInitial,
     TResult? Function()? movieLoadInProgress,
+    TResult? Function(List<Movie> movies)? movieFetchMoreInProgress,
     TResult? Function(List<Movie> movies)? movieFetched,
     TResult? Function(List<Movie> movies)? movieSearchFetched,
     TResult? Function(String message)? movieFaild,
@@ -448,6 +643,7 @@ class _$MovieFetchedImpl implements _MovieFetched {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? movieInitial,
     TResult Function()? movieLoadInProgress,
+    TResult Function(List<Movie> movies)? movieFetchMoreInProgress,
     TResult Function(List<Movie> movies)? movieFetched,
     TResult Function(List<Movie> movies)? movieSearchFetched,
     TResult Function(String message)? movieFaild,
@@ -465,6 +661,8 @@ class _$MovieFetchedImpl implements _MovieFetched {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) movieInitial,
     required TResult Function(_LoadInProgress value) movieLoadInProgress,
+    required TResult Function(_FetchMoreInProgress value)
+        movieFetchMoreInProgress,
     required TResult Function(_MovieFetched value) movieFetched,
     required TResult Function(_MovieSearchFetched value) movieSearchFetched,
     required TResult Function(_Faild value) movieFaild,
@@ -478,6 +676,7 @@ class _$MovieFetchedImpl implements _MovieFetched {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? movieInitial,
     TResult? Function(_LoadInProgress value)? movieLoadInProgress,
+    TResult? Function(_FetchMoreInProgress value)? movieFetchMoreInProgress,
     TResult? Function(_MovieFetched value)? movieFetched,
     TResult? Function(_MovieSearchFetched value)? movieSearchFetched,
     TResult? Function(_Faild value)? movieFaild,
@@ -491,6 +690,7 @@ class _$MovieFetchedImpl implements _MovieFetched {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? movieInitial,
     TResult Function(_LoadInProgress value)? movieLoadInProgress,
+    TResult Function(_FetchMoreInProgress value)? movieFetchMoreInProgress,
     TResult Function(_MovieFetched value)? movieFetched,
     TResult Function(_MovieSearchFetched value)? movieSearchFetched,
     TResult Function(_Faild value)? movieFaild,
@@ -586,6 +786,7 @@ class _$MovieSearchFetchedImpl implements _MovieSearchFetched {
   TResult when<TResult extends Object?>({
     required TResult Function() movieInitial,
     required TResult Function() movieLoadInProgress,
+    required TResult Function(List<Movie> movies) movieFetchMoreInProgress,
     required TResult Function(List<Movie> movies) movieFetched,
     required TResult Function(List<Movie> movies) movieSearchFetched,
     required TResult Function(String message) movieFaild,
@@ -599,6 +800,7 @@ class _$MovieSearchFetchedImpl implements _MovieSearchFetched {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? movieInitial,
     TResult? Function()? movieLoadInProgress,
+    TResult? Function(List<Movie> movies)? movieFetchMoreInProgress,
     TResult? Function(List<Movie> movies)? movieFetched,
     TResult? Function(List<Movie> movies)? movieSearchFetched,
     TResult? Function(String message)? movieFaild,
@@ -612,6 +814,7 @@ class _$MovieSearchFetchedImpl implements _MovieSearchFetched {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? movieInitial,
     TResult Function()? movieLoadInProgress,
+    TResult Function(List<Movie> movies)? movieFetchMoreInProgress,
     TResult Function(List<Movie> movies)? movieFetched,
     TResult Function(List<Movie> movies)? movieSearchFetched,
     TResult Function(String message)? movieFaild,
@@ -629,6 +832,8 @@ class _$MovieSearchFetchedImpl implements _MovieSearchFetched {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) movieInitial,
     required TResult Function(_LoadInProgress value) movieLoadInProgress,
+    required TResult Function(_FetchMoreInProgress value)
+        movieFetchMoreInProgress,
     required TResult Function(_MovieFetched value) movieFetched,
     required TResult Function(_MovieSearchFetched value) movieSearchFetched,
     required TResult Function(_Faild value) movieFaild,
@@ -642,6 +847,7 @@ class _$MovieSearchFetchedImpl implements _MovieSearchFetched {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? movieInitial,
     TResult? Function(_LoadInProgress value)? movieLoadInProgress,
+    TResult? Function(_FetchMoreInProgress value)? movieFetchMoreInProgress,
     TResult? Function(_MovieFetched value)? movieFetched,
     TResult? Function(_MovieSearchFetched value)? movieSearchFetched,
     TResult? Function(_Faild value)? movieFaild,
@@ -655,6 +861,7 @@ class _$MovieSearchFetchedImpl implements _MovieSearchFetched {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? movieInitial,
     TResult Function(_LoadInProgress value)? movieLoadInProgress,
+    TResult Function(_FetchMoreInProgress value)? movieFetchMoreInProgress,
     TResult Function(_MovieFetched value)? movieFetched,
     TResult Function(_MovieSearchFetched value)? movieSearchFetched,
     TResult Function(_Faild value)? movieFaild,
@@ -744,6 +951,7 @@ class _$FaildImpl implements _Faild {
   TResult when<TResult extends Object?>({
     required TResult Function() movieInitial,
     required TResult Function() movieLoadInProgress,
+    required TResult Function(List<Movie> movies) movieFetchMoreInProgress,
     required TResult Function(List<Movie> movies) movieFetched,
     required TResult Function(List<Movie> movies) movieSearchFetched,
     required TResult Function(String message) movieFaild,
@@ -757,6 +965,7 @@ class _$FaildImpl implements _Faild {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? movieInitial,
     TResult? Function()? movieLoadInProgress,
+    TResult? Function(List<Movie> movies)? movieFetchMoreInProgress,
     TResult? Function(List<Movie> movies)? movieFetched,
     TResult? Function(List<Movie> movies)? movieSearchFetched,
     TResult? Function(String message)? movieFaild,
@@ -770,6 +979,7 @@ class _$FaildImpl implements _Faild {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? movieInitial,
     TResult Function()? movieLoadInProgress,
+    TResult Function(List<Movie> movies)? movieFetchMoreInProgress,
     TResult Function(List<Movie> movies)? movieFetched,
     TResult Function(List<Movie> movies)? movieSearchFetched,
     TResult Function(String message)? movieFaild,
@@ -787,6 +997,8 @@ class _$FaildImpl implements _Faild {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) movieInitial,
     required TResult Function(_LoadInProgress value) movieLoadInProgress,
+    required TResult Function(_FetchMoreInProgress value)
+        movieFetchMoreInProgress,
     required TResult Function(_MovieFetched value) movieFetched,
     required TResult Function(_MovieSearchFetched value) movieSearchFetched,
     required TResult Function(_Faild value) movieFaild,
@@ -800,6 +1012,7 @@ class _$FaildImpl implements _Faild {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? movieInitial,
     TResult? Function(_LoadInProgress value)? movieLoadInProgress,
+    TResult? Function(_FetchMoreInProgress value)? movieFetchMoreInProgress,
     TResult? Function(_MovieFetched value)? movieFetched,
     TResult? Function(_MovieSearchFetched value)? movieSearchFetched,
     TResult? Function(_Faild value)? movieFaild,
@@ -813,6 +1026,7 @@ class _$FaildImpl implements _Faild {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? movieInitial,
     TResult Function(_LoadInProgress value)? movieLoadInProgress,
+    TResult Function(_FetchMoreInProgress value)? movieFetchMoreInProgress,
     TResult Function(_MovieFetched value)? movieFetched,
     TResult Function(_MovieSearchFetched value)? movieSearchFetched,
     TResult Function(_Faild value)? movieFaild,
@@ -907,6 +1121,7 @@ class _$EndOfListImpl implements _EndOfList {
   TResult when<TResult extends Object?>({
     required TResult Function() movieInitial,
     required TResult Function() movieLoadInProgress,
+    required TResult Function(List<Movie> movies) movieFetchMoreInProgress,
     required TResult Function(List<Movie> movies) movieFetched,
     required TResult Function(List<Movie> movies) movieSearchFetched,
     required TResult Function(String message) movieFaild,
@@ -920,6 +1135,7 @@ class _$EndOfListImpl implements _EndOfList {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? movieInitial,
     TResult? Function()? movieLoadInProgress,
+    TResult? Function(List<Movie> movies)? movieFetchMoreInProgress,
     TResult? Function(List<Movie> movies)? movieFetched,
     TResult? Function(List<Movie> movies)? movieSearchFetched,
     TResult? Function(String message)? movieFaild,
@@ -933,6 +1149,7 @@ class _$EndOfListImpl implements _EndOfList {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? movieInitial,
     TResult Function()? movieLoadInProgress,
+    TResult Function(List<Movie> movies)? movieFetchMoreInProgress,
     TResult Function(List<Movie> movies)? movieFetched,
     TResult Function(List<Movie> movies)? movieSearchFetched,
     TResult Function(String message)? movieFaild,
@@ -950,6 +1167,8 @@ class _$EndOfListImpl implements _EndOfList {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) movieInitial,
     required TResult Function(_LoadInProgress value) movieLoadInProgress,
+    required TResult Function(_FetchMoreInProgress value)
+        movieFetchMoreInProgress,
     required TResult Function(_MovieFetched value) movieFetched,
     required TResult Function(_MovieSearchFetched value) movieSearchFetched,
     required TResult Function(_Faild value) movieFaild,
@@ -963,6 +1182,7 @@ class _$EndOfListImpl implements _EndOfList {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? movieInitial,
     TResult? Function(_LoadInProgress value)? movieLoadInProgress,
+    TResult? Function(_FetchMoreInProgress value)? movieFetchMoreInProgress,
     TResult? Function(_MovieFetched value)? movieFetched,
     TResult? Function(_MovieSearchFetched value)? movieSearchFetched,
     TResult? Function(_Faild value)? movieFaild,
@@ -976,6 +1196,7 @@ class _$EndOfListImpl implements _EndOfList {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? movieInitial,
     TResult Function(_LoadInProgress value)? movieLoadInProgress,
+    TResult Function(_FetchMoreInProgress value)? movieFetchMoreInProgress,
     TResult Function(_MovieFetched value)? movieFetched,
     TResult Function(_MovieSearchFetched value)? movieSearchFetched,
     TResult Function(_Faild value)? movieFaild,

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'components/details_area.dart';
@@ -8,23 +10,36 @@ class MovieDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final imageHeight = MediaQuery.of(context).size.height * 0.4;
-    return Scaffold(
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          SliverAppBar(
-            stretch: true,
-            floating: false,
-            pinned: true,
-            expandedHeight: imageHeight,
-            flexibleSpace: const FlexibleAppBar(),
+    const maxImageHeight = 350.0;
+    const minHorizontalPadding = 40.0;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Scaffold(
+          body: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: constraints.smallest.width < 600
+                  ? 0
+                  : max(minHorizontalPadding, constraints.maxWidth * 0.05),
+            ),
+            child: CustomScrollView(
+              physics: const BouncingScrollPhysics(),
+              slivers: [
+                SliverAppBar(
+                  stretch: true,
+                  floating: false,
+                  pinned: true,
+                  expandedHeight:
+                      max(maxImageHeight, constraints.maxHeight * 0.4),
+                  flexibleSpace: const FlexibleAppBar(),
+                ),
+                const SliverToBoxAdapter(
+                  child: DetailsArea(),
+                ),
+              ],
+            ),
           ),
-          const SliverToBoxAdapter(
-            child: DetailsArea(),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

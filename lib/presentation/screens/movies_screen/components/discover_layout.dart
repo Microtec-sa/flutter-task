@@ -1,10 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/constants/colors.dart';
 import 'package:movies_app/presentation/screens/movies_screen/components/movie_card.dart';
 
 import '../../../../business_logic/bloc/movie/movie_bloc.dart';
-import '../../../../constants/helper.dart';
 import '../../../../data/models/movie.dart';
 import 'container_wrapper.dart';
 
@@ -53,10 +54,11 @@ class _DiscoverLayoutState extends State<DiscoverLayout> {
 
   @override
   Widget build(BuildContext context) {
-    Log.debug(widget.movies.length);
     const aspectRatio = 0.55;
     final topPadding = MediaQuery.of(context).padding.top;
     final bottomPadding = MediaQuery.of(context).padding.bottom;
+    final currentCount = (MediaQuery.of(context).size.width ~/ 170).toInt();
+    const minCount = 3;
     return GlowingOverscrollIndicator(
       axisDirection: AxisDirection.down,
       color: AppColors.primaryColor,
@@ -64,8 +66,8 @@ class _DiscoverLayoutState extends State<DiscoverLayout> {
         controller: scrollController,
         padding:
             EdgeInsets.only(top: topPadding + 55 + 5, bottom: bottomPadding),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: max(currentCount, minCount),
           crossAxisSpacing: 12,
           mainAxisSpacing: 12,
           childAspectRatio: aspectRatio,
@@ -77,17 +79,9 @@ class _DiscoverLayoutState extends State<DiscoverLayout> {
                   movie: widget.movies[index],
                   closedCard: MovieCard(movie: widget.movies[index]),
                 )
-              : widget.endOfList
-                  ? const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 32),
-                      child: Center(
-                        child: Text(
-                          'End of list',
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    )
-                  : const Padding(
+              : context.read<MovieBloc>().state.maybeWhen(
+                    orElse: () => const SizedBox(),
+                    movieFetchMoreInProgress: (value) => const Padding(
                       padding: EdgeInsets.symmetric(vertical: 32),
                       child: Center(
                         child: CircularProgressIndicator.adaptive(
@@ -96,7 +90,17 @@ class _DiscoverLayoutState extends State<DiscoverLayout> {
                           ),
                         ),
                       ),
-                    );
+                    ),
+                    movieEndOfList: (movies) => const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 32),
+                      child: Center(
+                        child: Text(
+                          'End of list',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  );
         },
       ),
     );

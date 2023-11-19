@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:movies_app/constants/helper.dart';
 import 'package:movies_app/data/models/movie.dart';
 import 'package:movies_app/data/repository/movie_repository.dart';
 
@@ -41,6 +40,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     _pageCount++;
     final moviesRepository = MoviesRepository();
     try {
+      emit(_FetchMoreInProgress(moviesRepository.allMovies));
       final response = await moviesRepository.getMovies(_pageCount);
       if (response.page <= response.totalPage) {
         emit(_MovieFetched(response.data));
@@ -79,6 +79,8 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     _pageCount++;
     final moviesRepository = MoviesRepository();
     try {
+      emit(_FetchMoreInProgress(moviesRepository.allMovies));
+
       final response =
           await moviesRepository.seaechMoviesByQuary(_pageCount, query);
       if (response.page <= response.totalPage) {
