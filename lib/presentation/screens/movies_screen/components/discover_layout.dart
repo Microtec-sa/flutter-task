@@ -7,7 +7,6 @@ import 'package:movies_app/presentation/screens/movies_screen/components/movie_c
 
 import '../../../../business_logic/bloc/movie/movie_bloc.dart';
 import '../../../../data/models/movie.dart';
-import 'container_wrapper.dart';
 
 class DiscoverLayout extends StatefulWidget {
   const DiscoverLayout({
@@ -75,10 +74,7 @@ class _DiscoverLayoutState extends State<DiscoverLayout> {
         itemCount: widget.movies.length + 1,
         itemBuilder: (context, index) {
           return index < widget.movies.length
-              ? ContainerWrapper(
-                  movie: widget.movies[index],
-                  closedCard: MovieCard(movie: widget.movies[index]),
-                )
+              ? MovieCard(movie: widget.movies[index])
               : context.read<MovieBloc>().state.maybeWhen(
                     orElse: () => const SizedBox(),
                     movieFetchMoreInProgress: (value) => const Padding(
